@@ -10,21 +10,11 @@ jobs:
       run:
         working-directory: health-client
     runs-on: ubuntu-latest
-    permissions: write-all    
     steps:
       - uses: actions/checkout@v3
       - name: install dependencies
         run: npm install
+      - name: create .env.production
+        run: echo 'REACT_APP_HEALTH_CHECK_SERVICE_URL=${{ env.REACT_APP_HEALTH_CHECK_SERVICE_URL }}' >> .env.production
       - name: build
-        run: npm run build
-      - name: git config
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-      - name: merge to production
-        run: |
-          git fetch --unshallow
-          git checkout production
-          git pull
-          git merge --no-ff main -m "auto-merge main to production"
-          git push
+        run: npm run deploy
