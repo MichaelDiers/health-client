@@ -25,3 +25,7 @@ jobs:
           git pull
           git merge --no-ff main -m "auto-merge main to production"
           git push
+  defaults:
+    run:      
+      working-directory: health-client
+
