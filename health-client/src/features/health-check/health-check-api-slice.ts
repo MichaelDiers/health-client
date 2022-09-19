@@ -19,7 +19,7 @@ const enhancedEndpoints = apiSplice.enhanceEndpoints({
 const healthCheckApiSlice = enhancedEndpoints.injectEndpoints({
   endpoints: builder => ({
     healthCheck: builder.query<IHealthCheckResult, void>({
-      query: () => 'http://localhost:3001/health',
+      query: () => process.env.REACT_APP_HEALTH_CHECK_SERVICE_URL as string,
       providesTags: [HEALTH_CHECK_TAG],
     }),
   }),
