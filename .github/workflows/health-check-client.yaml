@@ -10,11 +10,20 @@ jobs:
       run:
         working-directory: health-client
     runs-on: ubuntu-latest
+    environment: production
+    env:
+      REACT_APP_HEALTH_CHECK_SERVICE_URL: ${{ secrets.REACT_APP_HEALTH_CHECK_SERVICE_URL }}
+      EMAIL: ${{ secrets.EMAIL }}
+      USERNAME: ${{ secrets.USERNAME }}
     steps:
       - uses: actions/checkout@v3
       - name: install dependencies
         run: npm install
       - name: create .env.production
         run: echo 'REACT_APP_HEALTH_CHECK_SERVICE_URL=${{ env.REACT_APP_HEALTH_CHECK_SERVICE_URL }}' >> .env.production
+      - name: github config
+        run: |
+          git config --global user.email "${{ env.EMAIL }}"
+          git config --global user.name "${{ env.USERNAME }}"
       - name: build
         run: npm run deploy
