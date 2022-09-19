@@ -17,7 +17,6 @@ export default function HealthCheck() {
 
   return (
     <>
-      <h1>Health Checks</h1>
       <p>Check the current status of the system including websites, services and databases.</p>
       <div>{queryError?.status ? 'Service is not available. Try again later!' : ''}</div>
       <div className='health-check-result'>
@@ -35,11 +34,11 @@ export default function HealthCheck() {
             })
             : ''
         }
+        <button
+          disabled={isLoading || isFetching}
+          onClick={onReload}
+        >Reload</button>
       </div>
-      <button
-        disabled={isLoading || isFetching}
-        onClick={onReload}
-      >Reload</button>
     </>
   );
 }

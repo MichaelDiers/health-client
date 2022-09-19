@@ -1,4 +1,5 @@
 import './App.css';
+import { Header } from './components/Header';
 import HealthCheck from './features/health-check/health-check';
 
 /**
@@ -8,8 +9,7 @@ import HealthCheck from './features/health-check/health-check';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <Header />
       <main>
         <HealthCheck />
       </main>
