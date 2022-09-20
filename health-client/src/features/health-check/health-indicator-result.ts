@@ -11,5 +11,10 @@ export default interface IHealthIndicatorResult {
      * The status of the executed health check.
      */
     status: string;
+
+    /**
+     * Detailed information about all executed health checks.
+     */
+    details?: IHealthIndicatorResult;
   },
 }

@@ -36,3 +36,18 @@ header .material-symbols-outlined {
   grid-template-rows: auto 1fr auto;
   place-items: center;
 }
+
+.sub-result {
+  margin-left: 20px;
+}
+
+.status-ok,
+.status-up {
+  color: green;
+}
+
+.status-down,
+.status-error {
+  color: red;
+  font-weight: bold;
+}
