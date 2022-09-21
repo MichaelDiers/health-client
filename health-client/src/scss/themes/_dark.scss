@@ -50,19 +50,24 @@ button::after {
   border-bottom-color: $color-dark-foreground;
 }
 
+button:focus,
 button:hover {
   box-shadow: 0 0 10px $color-dark-foreground;
 }
 
+button:focus::before,
+button:focus::after,
 button:hover::before,
 button:hover::after {
   animation: 2s ease-in-out infinite;
 }
 
+button:focus::before,
 button:hover::before {
   animation-name: border-one;
 }
 
+button:focus::after,
 button:hover::after {
   animation-name: border-two;
 }
@@ -290,15 +295,3 @@ button:disabled::after {
     border-bottom-color: $color-dark-foreground;
   }
 }
-
-/*
-button {
-  background-color: $color-dark-foreground;
-  color: $color-dark-background;
-}
-
-button:disabled {
-  background-color: lighten($color-dark-foreground, 50);
-  color: lighten($color-dark-background, 50);
-}
-*/
