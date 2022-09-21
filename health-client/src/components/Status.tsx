@@ -3,11 +3,13 @@ export function Status({
   status,
   isWaiting = false,
   counter,
+  isSubResult = false,
 }: {
   keyText: string,
   status: string,
   isWaiting?: boolean,
   counter?: number,
+  isSubResult?: boolean,
 }) {
   let text;
   let cssClass = '';
@@ -31,7 +33,7 @@ export function Status({
   if (isWaiting) {
     return (
       <>
-        <div>{keyText}</div>
+        <div className={isSubResult ? 'sub-result' : ''}>{keyText}</div>
         <div>{counter ? `${counter} sec` : ''}</div>
       </>
     )
@@ -39,7 +41,7 @@ export function Status({
 
   return (
     <>
-      <div className={cssClass}>{keyText}</div>
+      <div className={`cssClass ${isSubResult ? 'sub-result' : ''}`}>{keyText}</div>
       <div className={`${cssClass} material-symbols-outlined`}>
         <span className='material-symbols-outlined'>{text}</span>
       </div>

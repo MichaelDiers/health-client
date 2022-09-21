@@ -38,7 +38,7 @@ export default function HealthCheck() {
                       ? Object.entries(value.details).map(([subKey, subValue], j) => {
                         return (
                           <Fragment key={`key_${i}_${j}`}>
-                            <Status keyText={subKey} status={subValue.status} isWaiting={isLoading || isFetching} />
+                            <Status keyText={subKey} status={subValue.status} isWaiting={isLoading || isFetching} isSubResult={true} />
                           </Fragment>
                         )
                       })
