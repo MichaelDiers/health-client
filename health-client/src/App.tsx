@@ -1,4 +1,3 @@
-import './App.css';
 import { Header } from './components/Header';
 import HealthCheck from './features/health-check/health-check';
 

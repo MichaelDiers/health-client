@@ -1,0 +1,13 @@
+header {
+  display: grid;
+  font-size: 3rem;
+  font-weight: bold;
+  gap: 20px;
+  grid-template-columns: auto 1fr auto;
+  height: 50px;
+  place-items: center;
+}
+
+header .material-symbols-outlined {
+  font-size: 3rem;
+}

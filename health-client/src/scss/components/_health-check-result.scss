@@ -1,0 +1,25 @@
+.health-check-result {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto auto;
+}
+
+.health-check-result div:first-child,
+.health-check-result div:nth-child(2) {
+  font-weight: bold;
+}
+
+.sub-result {
+  margin-left: 20px;
+}
+
+.status-ok,
+.status-up {
+  color: green;
+}
+
+.status-down,
+.status-error {
+  color: red;
+  font-weight: bold;
+}
