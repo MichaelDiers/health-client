@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { Status } from '../../components/Status';
 import { useHealthCheckQuery } from './health-check-api-slice';
 import IHealthCheckResult from './health-check-result';
 
@@ -8,34 +9,32 @@ import IHealthCheckResult from './health-check-result';
  */
 export default function HealthCheck() {
   const { data, error, isFetching, isLoading, refetch } = useHealthCheckQuery();
-  const queryData = data as IHealthCheckResult || (error as { data: any })?.data as IHealthCheckResult;
+  // evaluate error before data
+  const queryData = (error as { data: any })?.data as IHealthCheckResult || data as IHealthCheckResult;
   const onReload = () => {
     refetch();
   }
 
-  const STATUS_ERROR = 'error';
-
   return (
-    <div>
+    <div className='health-check'>
       <p>Check the current status of the system including websites, services and databases.</p>
-      <div>{queryData?.status === STATUS_ERROR ? 'Service is not available. Try again later!' : ''}</div>
       <div className='health-check-result'>
         <div className={`status-${queryData?.status}`}>Status</div>
-        <div className={`status-${queryData?.status}`}>{queryData?.status || 'waiting'}</div>
+        <Status status={queryData?.status || 'waiting'} />
         {
           queryData?.details
             ? Object.entries(queryData.details).map(([key, value], i) => {
               return (
                 <Fragment key={`key_${i}`}>
                   <div className={`status-${value.status}`}>{key}</div>
-                  <div className={`status-${value.status}`}>{value.status}</div>
+                  <Status status={value.status} />
                   {
                     value.details
                       ? Object.entries(value.details).map(([subKey, subValue], j) => {
                         return (
                           <Fragment key={`key_${i}_${j}`}>
                             <div className={`status-${subValue.status} sub-result`}>{subKey}</div>
-                            <div className={`status-${subValue.status}`}>{subValue.status}</div>
+                            <Status status={subValue.status} />
                           </Fragment>
                         )
                       })

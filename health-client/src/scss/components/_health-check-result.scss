@@ -1,7 +1,9 @@
 .health-check-result {
+  align-items: center;
   display: grid;
   gap: 20px;
-  grid-template-columns: auto auto;
+  grid-template-columns: min-content min-content;
+  margin: 20px;
 }
 
 .health-check-result div:first-child,
@@ -15,11 +17,16 @@
 
 .status-ok,
 .status-up {
-  color: green;
+  color: $color-success;
 }
 
 .status-down,
 .status-error {
-  color: red;
+  color: $color-error;
   font-weight: bold;
+}
+
+.health-check-result button {
+  justify-self: end;
+  min-width: 200px;
 }
