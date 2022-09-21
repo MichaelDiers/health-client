@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import HealthCheck from './features/health-check/health-check';
@@ -7,13 +8,15 @@ import HealthCheck from './features/health-check/health-check';
  * @returns A html component.
  */
 function App() {
+  const [isLightTheme, setIsLightTheme] = useState(false);
+
   return (
-    <div className="App">
+    <div className={`App ${isLightTheme ? 'light-theme' : ''}`}>
       <Header />
       <main>
         <HealthCheck />
       </main>
-      <Footer />
+      <Footer toggleLightTheme={() => setIsLightTheme(!isLightTheme)} isLightTheme={isLightTheme} />
     </div>
   );
 }
