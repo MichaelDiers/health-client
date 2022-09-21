@@ -2,7 +2,7 @@
   align-items: center;
   display: grid;
   gap: 20px;
-  grid-template-columns: min-content min-content;
+  grid-template-columns: auto minmax(50px, auto);
   margin: 20px;
 }
 
@@ -15,12 +15,6 @@
   margin-left: 20px;
 }
 
-.status-ok,
-.status-up {
-  color: $color-success;
-}
-
-.status-down,
 .status-error {
   color: $color-error;
   font-weight: bold;
@@ -29,4 +23,28 @@
 .health-check-result button {
   justify-self: end;
   min-width: 200px;
+}
+
+.health-check-result::before {
+  content: '';
+  position: absolute;
+  height: 35%;
+  width: 15%;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  top: 0;
+  left: 85%;
+  border-top-right-radius: 5%;
+}
+
+.health-check-result::after {
+  content: '';
+  position: absolute;
+  height: 35%;
+  width: 15%;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  top: 65%;
+  left: 0;
+  border-bottom-left-radius: 5%;
 }

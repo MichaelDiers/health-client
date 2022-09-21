@@ -1,5 +1,35 @@
-@mixin rotating-circle-loader(
-  $name: 'rotating-circle-loader',
+$breakpoints: (
+  'small': (min-width: 450px),
+  'medium': (min-width: 800px),
+  'large': (min-width: 1000px),
+  'huge': (min-width: 1200px),
+);
+
+// Responsive breakpoint manager
+// https://sass-guidelin.es/#responsive-web-design-and-breakpoints
+/// @access public
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(type-of($raw-query)=='string',
+      unquote($raw-query),
+      inspect($raw-query));
+
+    @media #{$query} {
+      @content;
+    }
+  }
+
+  @else {
+    @error 'No value found for `#{$breakpoint}`. '
+    +'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin rotating-circle-loader($name: 'rotating-circle-loader',
   $size: 7vw,
   $overlay-color: rgba(26, 24, 24, 0.8),
   $color-primary: #0e0eec,
@@ -19,7 +49,7 @@
     transition: opacity 0.2s ease-in-out;
     z-index: $z-index;
   }
-  
+
   .#{$name}::after {
     animation: #{$name}-animation 1s infinite 0.1s;
     border: calc($size/10) solid $color-secondary;
@@ -33,18 +63,18 @@
     width: $size;
     z-index: $z-index + 1;
   }
-  
-  .#{$name}.show {    
+
+  .#{$name}.show {
     cursor: $cursor;
     display: block;
     opacity: 1;
   }
-  
+
   @keyframes #{$name}-animation {
     0% {
       transform: rotateZ(0);
     }
-  
+
     100% {
       transform: rotateZ(360deg);
     }

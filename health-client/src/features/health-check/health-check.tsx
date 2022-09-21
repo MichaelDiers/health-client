@@ -12,14 +12,14 @@ export default function HealthCheck() {
   // evaluate error before data
   const queryData = (error as { data: any })?.data as IHealthCheckResult || data as IHealthCheckResult;
 
-  const [counter, setCounter] = useState(10);
+  const [counter, setCounter] = useState(9);
   useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
   }, [counter]);
 
   const onReload = () => {
     refetch();
-    setCounter(10);
+    setCounter(9);
   }
 
   return (
@@ -49,11 +49,11 @@ export default function HealthCheck() {
             })
             : <></>
         }
-        <button
-          disabled={isLoading || isFetching}
-          onClick={onReload}
-        >Reload</button>
       </div>
+      <button
+        disabled={isLoading || isFetching}
+        onClick={onReload}
+      >Reload</button>
     </div>
   );
 }

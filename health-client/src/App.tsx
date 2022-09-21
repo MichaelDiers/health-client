@@ -1,3 +1,4 @@
+import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import HealthCheck from './features/health-check/health-check';
 
@@ -12,6 +13,7 @@ function App() {
       <main>
         <HealthCheck />
       </main>
+      <Footer />
     </div>
   );
 }

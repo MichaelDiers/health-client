@@ -1,5 +1,7 @@
 .App {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  min-width: 300px;
+  padding: $default-padding;
   place-items: center;
 }

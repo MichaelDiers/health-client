@@ -10,9 +10,12 @@ export function Status({
   counter?: number,
 }) {
   let text;
+  let cssClass = '';
   switch (status) {
     case 'down':
+    case 'error':
       text = 'error';
+      cssClass = 'status-error';
       break;
     case 'ok':
       text = 'done_all';
@@ -29,15 +32,15 @@ export function Status({
     return (
       <>
         <div>{keyText}</div>
-        <div>{counter}</div>
+        <div>{counter ? `${counter} sec` : ''}</div>
       </>
     )
   }
 
   return (
     <>
-      <div className={`status-${status}`}>{keyText}</div>
-      <div className={`status-${status} material-symbols-outlined`}>
+      <div className={cssClass}>{keyText}</div>
+      <div className={`${cssClass} material-symbols-outlined`}>
         <span className='material-symbols-outlined'>{text}</span>
       </div>
     </>
