@@ -3,11 +3,6 @@ body {
   color: $color-dark-foreground;
 }
 
-.health-check-result {
-  padding: 2 * $default-padding;
-  position: relative;
-}
-
 .health-check-result::before {
   border-top-color: $color-dark-foreground;
   border-right-color: $color-dark-foreground;
@@ -19,8 +14,6 @@ body {
 }
 
 button {
-  position: relative;
-  border: none;
   background-color: $color-dark-background;
   color: $color-dark-foreground;
 }
@@ -28,24 +21,15 @@ button {
 
 button::before,
 button::after {
-  content: '';
-  box-sizing: content-box;
-  position: absolute;
-  border: 1px solid transparent;
-  width: 50%;
-  height: 50%;
+  border-color: transparent;
 }
 
 button::before {
-  left: 0;
-  top: 0;
   border-top-color: $color-dark-foreground;
   border-left-color: $color-dark-foreground;
 }
 
 button::after {
-  left: 50%;
-  top: 50%;
   border-right-color: $color-dark-foreground;
   border-bottom-color: $color-dark-foreground;
 }
@@ -53,13 +37,6 @@ button::after {
 button:focus,
 button:hover {
   box-shadow: 0 0 10px $color-dark-foreground;
-}
-
-button:focus::before,
-button:focus::after,
-button:hover::before,
-button:hover::after {
-  animation: 2s ease-in-out infinite;
 }
 
 button:focus::before,
@@ -85,11 +62,6 @@ button:disabled::after {
 button:disabled {
   box-shadow: none;
   color: $color-dark-foreground-disabled;
-}
-
-button:disabled::before,
-button:disabled::after {
-  animation: none;
 }
 
 @keyframes border-one {

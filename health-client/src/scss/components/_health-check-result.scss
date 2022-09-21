@@ -4,6 +4,8 @@
   gap: 20px;
   grid-template-columns: auto minmax(50px, auto);
   margin: 20px;
+  padding: 2 * $default-padding;
+  position: relative;
 }
 
 .health-check-result div:first-child,
@@ -47,4 +49,42 @@
   top: 65%;
   left: 0;
   border-bottom-left-radius: 5%;
+}
+
+button {
+  position: relative;
+  border: none;
+}
+
+
+button::before,
+button::after {
+  content: '';
+  box-sizing: content-box;
+  position: absolute;
+  border: 1px solid;
+  width: 50%;
+  height: 50%;
+}
+
+button::before {
+  left: 0;
+  top: 0;
+}
+
+button::after {
+  left: 50%;
+  top: 50%;
+}
+
+button:focus::before,
+button:focus::after,
+button:hover::before,
+button:hover::after {
+  animation: 2s ease-in-out infinite;
+}
+
+button:disabled::before,
+button:disabled::after {
+  animation: none;
 }
