@@ -1,7 +1,12 @@
 $color-dark-background: #030303;
 $color-dark-foreground: #02AAB0;
 $color-dark-foreground-disabled: #004c4e;
-$color-dark-background-disabled: #004c4e;
+
+$color-light-background-fallback: #a4e7e9;
+$color-light-background: radial-gradient(circle, #a4e7e9 0%, #02aab0 85%, #004c4e 100%);
+$color-light-foreground: #004c4e;
+$color-light-foreground-disabled: #30aeb3;
+
 $color-error: rgb(255, 116, 74);
 
 $default-padding: 15px;

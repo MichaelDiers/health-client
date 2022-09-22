@@ -51,6 +51,7 @@ export default function HealthCheck() {
         }
       </div>
       <button
+        className='button'
         disabled={isLoading || isFetching}
         onClick={onReload}
       >Reload</button>

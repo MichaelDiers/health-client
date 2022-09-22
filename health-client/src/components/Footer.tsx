@@ -7,7 +7,7 @@ export function Footer({
 }) {
   return (
     <footer>
-      <span className='material-symbols-outlined' onClick={toggleLightTheme}>{isLightTheme ? 'dark_mode' : 'light_mode'}</span>
+      <span className='material-symbols-outlined button' onClick={toggleLightTheme}>{isLightTheme ? 'dark_mode' : 'light_mode'}</span>
     </footer>
   )
 }

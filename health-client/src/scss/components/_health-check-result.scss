@@ -8,6 +8,63 @@
   position: relative;
 }
 
+.health-check-result::before {
+  border-right: 1px solid;
+  border-top: 1px solid;
+  border-top-right-radius: 5%;
+  left: 85%;
+  top: 0;
+}
+
+.health-check-result::after {
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-bottom-left-radius: 5%;
+  left: 0;
+  top: 65%;
+}
+
+.health-check button {
+  border: none;
+  margin: 40px;
+  min-width: 200px;
+  position: relative;
+}
+
+.health-check button::before,
+.health-check button::after {
+  border: 1px solid;
+  box-sizing: content-box;
+  content: '';
+  position: absolute;
+}
+
+.health-check button::before {
+  height: 50%;
+  left: 0;
+  top: 0;
+  width: 50%;
+}
+
+.health-check button::after {
+  height: 50%;
+  left: calc(50% - 2px);
+  top: calc(50% - 2px);
+  width: 50%;
+}
+
+.health-check button:focus::before,
+.health-check button:focus::after,
+.health-check button:hover::before,
+.health-check button:hover::after {
+  animation: 2s linear infinite;
+}
+
+.health-check button:disabled::before,
+.health-check button:disabled::after {
+  animation: none;
+}
+
 .health-check-result div:first-child,
 .health-check-result div:nth-child(2) {
   font-weight: bold;
@@ -22,69 +79,10 @@
   font-weight: bold;
 }
 
-.health-check-result button {
-  justify-self: end;
-  min-width: 200px;
-}
-
+.health-check-result::after,
 .health-check-result::before {
   content: '';
   position: absolute;
   height: 35%;
   width: 15%;
-  border-top: 1px solid;
-  border-right: 1px solid;
-  top: 0;
-  left: 85%;
-  border-top-right-radius: 5%;
-}
-
-.health-check-result::after {
-  content: '';
-  position: absolute;
-  height: 35%;
-  width: 15%;
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-  top: 65%;
-  left: 0;
-  border-bottom-left-radius: 5%;
-}
-
-button {
-  position: relative;
-  border: none;
-}
-
-
-button::before,
-button::after {
-  content: '';
-  box-sizing: content-box;
-  position: absolute;
-  border: 1px solid;
-  width: 50%;
-  height: 50%;
-}
-
-button::before {
-  left: 0;
-  top: 0;
-}
-
-button::after {
-  left: 50%;
-  top: 50%;
-}
-
-button:focus::before,
-button:focus::after,
-button:hover::before,
-button:hover::after {
-  animation: 2s ease-in-out infinite;
-}
-
-button:disabled::before,
-button:disabled::after {
-  animation: none;
 }
