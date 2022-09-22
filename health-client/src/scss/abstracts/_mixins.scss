@@ -15,8 +15,8 @@ $breakpoints: (
 
   @if $raw-query {
     $query: if(type-of($raw-query)=='string',
-      unquote($raw-query),
-      inspect($raw-query));
+    unquote($raw-query),
+    inspect($raw-query));
 
     @media #{$query} {
       @content;
@@ -25,12 +25,12 @@ $breakpoints: (
 
   @else {
     @error 'No value found for `#{$breakpoint}`. '
-    +'Please make sure it is defined in `$breakpoints` map.';
+      +'Please make sure it is defined in `$breakpoints` map.';
   }
 }
 
 @mixin rotating-circle-loader($name: 'rotating-circle-loader',
-  $size: 7vw,
+$size: 7vw,
   $overlay-color: rgba(26, 24, 24, 0.8),
   $color-primary: #0e0eec,
   $color-secondary: rgb(138, 138, 255),
@@ -82,47 +82,46 @@ $breakpoints: (
 }
 
 @mixin theme($name: null,
-  $background,
+$background,
   $color,
   $color-disabled,
 ) {
   @if $name {
-    .#{$name}.App {
+    .#{$name}.app {
       background: $background;
       color: $color;
     }
 
     .#{$name} {
-      @include _theme(('name': $name, 'background': $background, 'color': $color, 'color-disabled': $color-disabled)...)
+      @include add-theme(('name': $name, 'background': $background, 'color': $color, 'color-disabled': $color-disabled)...);
     }
   }
 
   @else {
-    .App {
+    @include add-theme(('name': $name, 'background': $background, 'color': $color, 'color-disabled': $color-disabled)...);
+
+    .app {
       background-color: $background;
       color: $color;
     }
-
-    @include _theme(('name': $name, 'background': $background, 'color': $color, 'color-disabled': $color-disabled)...)
   }
 }
 
-@mixin _theme($name: null,
-  $background,
+@mixin add-theme($name: null,
+$background,
   $color,
   $color-disabled,
   $animation-name-top: unique-id(),
   $animation-name-bottom: unique-id(),
 ) {
-
   .button:focus,
   .button:hover {
     box-shadow: 0 0 10px $color;
   }
 
   .health-check-result::before {
-    border-top-color: $color;
     border-right-color: $color;
+    border-top-color: $color;
   }
 
   .health-check-result::after {
@@ -141,19 +140,19 @@ $breakpoints: (
   }
 
   .health-check button::before {
-    border-top-color: $color;
     border-left-color: $color;
+    border-top-color: $color;
   }
 
   .health-check button::after {
-    border-right-color: $color;
     border-bottom-color: $color;
+    border-right-color: $color;
 
   }
 
   .health-check button:disabled::before {
-    border-top-color: $color-disabled;
     border-left-color: $color-disabled;
+    border-top-color: $color-disabled;
   }
 
   .health-check button:disabled::after {
@@ -178,205 +177,205 @@ $breakpoints: (
 
   @keyframes #{$animation-name-top} {
     0% {
+      border-color: transparent;
+      border-left-color: $color;
+      border-top-color: $color;
+      height: 50%;
       left: 0;
       top: 0;
       width: 50%;
-      height: 50%;
-      border-color: transparent;
-      border-top-color: $color;
-      border-left-color: $color;
     }
 
     12.5% {
+      border-color: transparent;
+      border-left-color: $color;
+      border-top-color: $color;
+      height: 0;
       left: 0;
       top: 0;
       width: calc(100% - 2px);
-      height: 0;
-      border-color: transparent;
-      border-top-color: $color;
-      border-left-color: $color;
     }
 
     12.51% {
+      border-color: transparent;
+      border-right-color: $color;
+      border-top-color: $color;
+      height: 0;
       left: 0;
       top: 0;
       width: calc(100% - 2px);
-      height: 0;
-      border-color: transparent;
-      border-top-color: $color;
-      border-right-color: $color;
     }
 
     37.5% {
+      border-color: transparent;
+      border-right-color: $color;
+      border-top-color: $color;
+      height: calc(100% - 2px);
       left: calc(100% - 2px);
       top: 0;
       width: 0;
-      height: calc(100% - 2px);
-      border-color: transparent;
-      border-top-color: $color;
-      border-right-color: $color;
     }
 
     37.51% {
+      border-color: transparent;
+      border-bottom-color: $color;
+      border-right-color: $color;
+      height: calc(100% - 2px);
       left: calc(100% - 2px);
       top: 0;
       width: 0;
-      height: calc(100% - 2px);
-      border-color: transparent;
-      border-right-color: $color;
-      border-bottom-color: $color;
     }
 
     62.5% {
+      border-color: transparent;
+      border-bottom-color: $color;
+      border-right-color: $color;
+      height: 0;
       left: 0;
       top: calc(100% - 2px);
       width: calc(100% - 2px);
-      height: 0;
-      border-color: transparent;
-      border-right-color: $color;
-      border-bottom-color: $color;
     }
 
     62.51% {
+      border-color: transparent;
+      border-bottom-color: $color;
+      border-left-color: $color;
+      height: 0;
       left: 0;
       top: calc(100% - 2px);
       width: calc(100% - 2px);
-      height: 0;
-      border-color: transparent;
-      border-left-color: $color;
-      border-bottom-color: $color;
     }
 
     87.5% {
+      border-color: transparent;
+      border-bottom-color: $color;
+      border-left-color: $color;
+      height: calc(100% - 2px);
       left: 0;
       top: 0;
       width: 0;
-      height: calc(100% - 2px);
-      border-color: transparent;
-      border-left-color: $color;
-      border-bottom-color: $color;
     }
 
     87.51% {
+      border-color: transparent;
+      border-left-color: $color;
+      border-top-color: $color;
+      height: calc(100% - 2px);
       left: 0;
       top: 0;
       width: 0;
-      height: calc(100% - 2px);
-      border-color: transparent;
-      border-top-color: $color;
-      border-left-color: $color;
     }
 
     100% {
+      border-color: transparent;
+      border-left-color: $color;
+      border-top-color: $color;
+      height: 50%;
       left: 0;
       top: 0;
       width: 50%;
-      height: 50%;
-      border-color: transparent;
-      border-top-color: $color;
-      border-left-color: $color;
     }
   }
 
   @keyframes #{$animation-name-bottom} {
     0% {
+      border: 1px solid transparent;
+      border-bottom-color: $color;
+      border-right-color: $color;
+      height: 50%;
       left: calc(50% - 2px);
       top: calc(50% - 2px);
       width: 50%;
-      height: 50%;
-      border: 1px solid transparent;
-      border-right-color: $color;
-      border-bottom-color: $color;
     }
 
     12.5% {
+      border-color: transparent;
+      border-bottom-color: $color;
+      border-right-color: $color;
+      height: 0;
       left: 0;
       top: calc(100% - 2px);
       width: calc(100% - 2px);
-      height: 0;
-      border-color: transparent;
-      border-right-color: $color;
-      border-bottom-color: $color;
     }
 
     12.51% {
+      border-color: transparent;
+      border-bottom-color: $color;
+      border-left-color: $color;
+      height: 0;
       left: 0;
       top: calc(100% - 2px);
       width: calc(100% - 2px);
-      height: 0;
-      border-color: transparent;
-      border-left-color: $color;
-      border-bottom-color: $color;
     }
 
     37.5% {
+      border-color: transparent;
+      border-bottom-color: $color;
+      border-left-color: $color;
+      height: calc(100% - 2px);
       left: 0;
       top: 0;
       width: 0;
-      height: calc(100% - 2px);
-      border-color: transparent;
-      border-left-color: $color;
-      border-bottom-color: $color;
     }
 
     37.51% {
+      border-color: transparent;
+      border-left-color: $color;
+      border-top-color: $color;
+      height: calc(100% - 2px);
       left: 0;
       top: 0;
       width: 0;
-      height: calc(100% - 2px);
-      border-color: transparent;
-      border-top-color: $color;
-      border-left-color: $color;
     }
 
     62.5% {
+      border-color: transparent;
+      border-left-color: $color;
+      border-top-color: $color;
+      height: 0;
       left: 0;
       top: 0;
       width: calc(100% - 2px);
-      height: 0;
-      border-color: transparent;
-      border-top-color: $color;
-      border-left-color: $color;
     }
 
     62.51% {
+      border-color: transparent;
+      border-right-color: $color;
+      border-top-color: $color;
+      height: 0;
       left: 0;
       top: 0;
       width: calc(100% - 2px);
-      height: 0;
-      border-color: transparent;
-      border-top-color: $color;
-      border-right-color: $color;
     }
 
     87.5% {
+      border-color: transparent;
+      border-right-color: $color;
+      border-top-color: $color;
+      height: calc(100% - 2px);
       left: calc(100% - 2px);
       top: 0;
       width: 0;
-      height: calc(100% - 2px);
-      border-color: transparent;
-      border-top-color: $color;
-      border-right-color: $color;
     }
 
     87.51% {
+      border-color: transparent;
+      border-bottom-color: $color;
+      border-right-color: $color;
+      height: calc(100% - 2px);
       left: calc(100% - 2px);
       top: 0;
       width: 0;
-      height: calc(100% - 2px);
-      border-color: transparent;
-      border-right-color: $color;
-      border-bottom-color: $color;
     }
 
     100% {
+      border: 1px solid transparent;
+      border-bottom-color: $color;
+      border-right-color: $color;
+      height: 50%;
       left: calc(50% - 2px);
       top: calc(50% - 2px);
       width: 50%;
-      height: 50%;
-      border: 1px solid transparent;
-      border-right-color: $color;
-      border-bottom-color: $color;
     }
   }
 }

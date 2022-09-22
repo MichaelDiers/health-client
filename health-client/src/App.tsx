@@ -11,7 +11,7 @@ function App() {
   const [isLightTheme, setIsLightTheme] = useState(false);
 
   return (
-    <div className={`App ${isLightTheme ? 'light-theme' : ''}`}>
+    <div className={`app ${isLightTheme ? 'light-theme' : ''}`}>
       <Header />
       <main>
         <HealthCheck />

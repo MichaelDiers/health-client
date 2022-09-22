@@ -18,14 +18,14 @@
 
 .health-check-result::after {
   border-bottom: 1px solid;
-  border-left: 1px solid;
   border-bottom-left-radius: 5%;
+  border-left: 1px solid;
   left: 0;
   top: 65%;
 }
 
 .health-check button {
-  border: none;
+  border: 0;
   margin: 40px;
   min-width: 200px;
   position: relative;
@@ -82,7 +82,7 @@
 .health-check-result::after,
 .health-check-result::before {
   content: '';
-  position: absolute;
   height: 35%;
+  position: absolute;
   width: 15%;
 }

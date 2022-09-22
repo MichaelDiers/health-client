@@ -2,7 +2,7 @@ header {
   display: grid;
   gap: 20px;
   grid-template-columns: auto 1fr auto;
-  padding-top: 2 * $default-padding;
   padding: $default-padding;
+  padding-top: 2 * $default-padding;
   place-items: center;
 }
